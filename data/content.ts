@@ -1,20 +1,56 @@
-import { Code, Smartphone, Cpu, Box, Globe, Shield, Rocket, Layout, Server, Database, Briefcase, Zap, Crown, Layers, Users, Target, Clock, Trophy } from 'lucide-react';
-import { Project, Service, PricingPlan, Testimonial, FAQItem } from '../types';
+import {
+  Code,
+  Smartphone,
+  Cpu,
+  Box,
+  Globe,
+  Shield,
+  Rocket,
+  Layout,
+  Server,
+  Database,
+  Briefcase,
+  Zap,
+  Crown,
+  Layers,
+  Users,
+  Target,
+  Clock,
+  Trophy,
+} from "lucide-react";
+import { Project, Service, PricingPlan, Testimonial, FAQItem } from "../types";
 
 export const NAV_LINKS = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: 'about' },
-  { name: 'Expertise', href: '#services' },
-  { name: 'Work', href: '#projects' },
-  { name: 'Pricing', href: '#pricing' },
-  { name: 'Business', href: '#bundle' },
-  { name: 'Contact', href: '#contact' },
+  { name: "Home", href: "#hero" },
+  { name: "About", href: "about" },
+  { name: "Expertise", href: "#services" },
+  { name: "Work", href: "#projects" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Business", href: "#bundle" },
+  { name: "Contact", href: "#contact" },
 ];
 
 export const TECH_STACK = [
-  "React", "Next.js", "TypeScript", "Node.js", "Python", "AWS", "Docker", "Kubernetes", 
-  "Solidity", "Ethereum", "Flutter", "React Native", "Figma", "TailwindCSS", "PostgreSQL", 
-  "MongoDB", "GraphQL", "Three.js", "OpenAI API", "Stripe"
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Node.js",
+  "Python",
+  "AWS",
+  "Docker",
+  "Kubernetes",
+  "Solidity",
+  "Ethereum",
+  "Flutter",
+  "React Native",
+  "Figma",
+  "TailwindCSS",
+  "PostgreSQL",
+  "MongoDB",
+  "GraphQL",
+  "Three.js",
+  "OpenAI API",
+  "Stripe",
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
@@ -23,210 +59,239 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Sarah Jenkins",
     role: "CEO",
     company: "FinTech Nova",
-    content: "Rishabh Labs didn't just build our platform; they architected our entire digital strategy. The Web3 integration is seamless, and our user engagement has doubled since launch.",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop"
+    content:
+      "Rishabh Labs didn't just build our platform; they architected our entire digital strategy. The Web3 integration is seamless, and our user engagement has doubled since launch.",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop",
   },
   {
     id: 2,
     name: "David Chen",
     role: "Founder",
     company: "Urban Eats",
-    content: "We needed a complex mobile app with real-time tracking in under 3 months. The team delivered ahead of schedule with code quality that our investors praised.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop"
+    content:
+      "We needed a complex mobile app with real-time tracking in under 3 months. The team delivered ahead of schedule with code quality that our investors praised.",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop",
   },
   {
     id: 3,
     name: "Elena Rodriguez",
     role: "Marketing Director",
     company: "Luxor Retail",
-    content: "The aesthetic sensibility this team brings is unmatched. They turned our boring e-commerce site into an immersive 3D experience that customers love.",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop"
-  }
+    content:
+      "The aesthetic sensibility this team brings is unmatched. They turned our boring e-commerce site into an immersive 3D experience that customers love.",
+    avatar:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=150&auto=format&fit=crop",
+  },
 ];
 
 export const FAQS: FAQItem[] = [
   {
     question: "How long does a typical project take?",
-    answer: "Timelines vary by complexity. A standard 'Kickstarter' website typically takes 2-3 weeks. Custom mobile apps or 'Growth' packages usually range from 6-10 weeks. We provide a detailed Gantt chart before starting."
+    answer:
+      "Timelines vary by complexity. A standard 'Kickstarter' website typically takes 2-3 weeks. Custom mobile apps or 'Growth' packages usually range from 6-10 weeks. We provide a detailed Gantt chart before starting.",
   },
   {
     question: "Do you offer payment plans?",
-    answer: "Yes! For Business Bundles and custom projects over $2,000, we typically structure payments as: 50% upfront to start, 25% upon design approval, and 25% upon final delivery."
+    answer:
+      "Yes! For Business Bundles and custom projects over $2,000, we typically structure payments as: 50% upfront to start, 25% upon design approval, and 25% upon final delivery.",
   },
   {
     question: "Will I be able to edit the website myself?",
-    answer: "Absolutely. We build most client sites using modern CMS solutions (like Next.js with Sanity/Strapi) or provide a custom Admin Dashboard, giving you full control over text, images, and products without touching code."
+    answer:
+      "Absolutely. We build most client sites using modern CMS solutions (like Next.js with Sanity/Strapi) or provide a custom Admin Dashboard, giving you full control over text, images, and products without touching code.",
   },
   {
     question: "Do you provide hosting and maintenance?",
-    answer: "Yes, our Business Bundles come with 2-6 months of dedicated support. After that, we offer affordable monthly maintenance packages that include hosting, security updates, and content tweaks."
+    answer:
+      "Yes, our Business Bundles come with 2-6 months of dedicated support. After that, we offer affordable monthly maintenance packages that include hosting, security updates, and content tweaks.",
   },
   {
     question: "Can you take over an existing project?",
-    answer: "We assess this on a case-by-case basis. If the existing codebase is modern and clean, we can certainly take over. If it's outdated, we might recommend a rebuild for better long-term performance."
-  }
+    answer:
+      "We assess this on a case-by-case basis. If the existing codebase is modern and clean, we can certainly take over. If it's outdated, we might recommend a rebuild for better long-term performance.",
+  },
 ];
 
 export const PROJECTS: Project[] = [
   {
     id: 1,
     title: "Magma DEX",
-    description: "A high-frequency decentralized exchange featuring real-time liquidity pools and automated market making with a glassmorphism UI.",
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop",
+    description:
+      "A high-frequency decentralized exchange featuring real-time liquidity pools and automated market making with a glassmorphism UI.",
+    image:
+      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2832&auto=format&fit=crop",
     techStack: ["React", "Solidity", "Web3.js", "Framer Motion"],
-    link: "#"
+    link: "#",
   },
   {
     id: 2,
     title: "Inferno Analytics",
-    description: "AI-powered dashboard processing millions of data points to predict market trends with 99% accuracy.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop",
+    description:
+      "AI-powered dashboard processing millions of data points to predict market trends with 99% accuracy.",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2940&auto=format&fit=crop",
     techStack: ["Next.js", "Python", "TensorFlow", "D3.js"],
-    link: "#"
+    link: "#",
   },
   {
     id: 3,
     title: "Urban Pulse",
-    description: "Smart city navigation system integrating AR overlays for real-time transit and event data.",
-    image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2938&auto=format&fit=crop",
+    description:
+      "Smart city navigation system integrating AR overlays for real-time transit and event data.",
+    image:
+      "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=2938&auto=format&fit=crop",
     techStack: ["React Native", "Node.js", "GraphQL", "Mapbox"],
-    link: "#"
-  }
+    link: "#",
+  },
 ];
 
 export const SERVICES: Service[] = [
   {
-    id: 'web-dev',
+    id: "web-dev",
     title: "Web Development",
-    shortDescription: "High-performance websites built with modern frameworks like React and Next.js.",
-    fullDescription: "We build pixel-perfect, lightning-fast web experiences. Whether it's a high-converting landing page or a corporate identity site, our code is clean, scalable, and SEO-optimized.",
+    shortDescription:
+      "High-performance websites built with modern frameworks like React and Next.js.",
+    fullDescription:
+      "We build pixel-perfect, lightning-fast web experiences. Whether it's a high-converting landing page or a corporate identity site, our code is clean, scalable, and SEO-optimized.",
     startingPrice: "$299",
     features: [
       "Custom React.js & Next.js Development",
       "Progressive Web Apps (PWA)",
       "Headless CMS Integration",
       "Performance Optimization & SEO",
-      "Interactive 3D Elements (Three.js)"
+      "Interactive 3D Elements (Three.js)",
     ],
     process: [
       "Discovery & Strategy",
       "UI/UX Wireframing",
       "Agile Development",
       "Testing & QA",
-      "Deployment & Maintenance"
+      "Deployment & Maintenance",
     ],
-    icon: Globe
+    icon: Globe,
   },
   {
-    id: 'mobile-apps',
+    id: "mobile-apps",
     title: "Mobile Apps",
-    shortDescription: "Native and cross-platform mobile applications for iOS and Android.",
-    fullDescription: "Reach your customers wherever they are. We develop intuitive mobile applications that feel native on every device, using cross-platform technologies to save you time and budget without compromising quality.",
+    shortDescription:
+      "Native and cross-platform mobile applications for iOS and Android.",
+    fullDescription:
+      "Reach your customers wherever they are. We develop intuitive mobile applications that feel native on every device, using cross-platform technologies to save you time and budget without compromising quality.",
     startingPrice: "$899",
     features: [
       "Cross-Platform Development",
       "Native iOS & Android Modules",
       "Offline Functionality",
       "Real-time Push Notifications",
-      "App Store Optimization (ASO)"
+      "App Store Optimization (ASO)",
     ],
     process: [
       "Concept Validation",
       "Prototyping",
       "Native Development",
       "Beta Testing",
-      "App Store Submission"
+      "App Store Submission",
     ],
-    icon: Smartphone
+    icon: Smartphone,
   },
   {
-    id: 'full-stack',
+    id: "full-stack",
     title: "Full Stack Websites",
-    shortDescription: "Complex web applications with robust backends and dynamic frontends.",
-    fullDescription: "When off-the-shelf solutions aren't enough. We architect complete digital ecosystems with secure servers, scalable databases, and custom APIs connecting to dynamic user interfaces.",
+    shortDescription:
+      "Complex web applications with robust backends and dynamic frontends.",
+    fullDescription:
+      "When off-the-shelf solutions aren't enough. We architect complete digital ecosystems with secure servers, scalable databases, and custom APIs connecting to dynamic user interfaces.",
     startingPrice: "$1,499",
     features: [
       "MERN/Next.js Architecture",
       "Custom REST & GraphQL APIs",
       "Database Design (SQL/NoSQL)",
       "Authentication & Security",
-      "Cloud Infrastructure (AWS)"
+      "Cloud Infrastructure (AWS)",
     ],
     process: [
       "System Architecture",
       "Database Modeling",
       "API Development",
       "Frontend Integration",
-      "Load Testing"
+      "Load Testing",
     ],
-    icon: Layers
+    icon: Layers,
   },
   {
-    id: 'web3',
+    id: "web3",
     title: "Web3 Smart Contracts",
-    shortDescription: "Secure, audited smart contracts for DeFi, NFTs, and DAOs.",
-    fullDescription: "Enter the decentralized future. Our blockchain engineers specialize in writing gas-optimized, secure smart contracts for Ethereum, Solana, and Layer 2 solutions.",
+    shortDescription:
+      "Secure, audited smart contracts for DeFi, NFTs, and DAOs.",
+    fullDescription:
+      "Enter the decentralized future. Our blockchain engineers specialize in writing gas-optimized, secure smart contracts for Ethereum, Solana, and Layer 2 solutions.",
     startingPrice: "$1,299",
     features: [
       "ERC-20, 721, 1155 Standards",
       "DeFi Protocol Development",
       "NFT Marketplace Architecture",
       "Smart Contract Auditing",
-      "Wallet Integration"
+      "Wallet Integration",
     ],
     process: [
       "Tokenomics Design",
       "Architecture Planning",
       "Smart Contract Coding",
       "Testnet Deployment",
-      "Mainnet Launch"
+      "Mainnet Launch",
     ],
-    icon: Code
+    icon: Code,
   },
   {
-    id: 'ai-automation',
+    id: "ai-automation",
     title: "AI Automation",
-    shortDescription: "Custom AI solutions to automate workflows and enhance decision-making.",
-    fullDescription: "Leverage the power of Artificial Intelligence to streamline your operations. We integrate LLMs and machine learning models to build chatbots, data analyzers, and automated workflow agents.",
+    shortDescription:
+      "Custom AI solutions to automate workflows and enhance decision-making.",
+    fullDescription:
+      "Leverage the power of Artificial Intelligence to streamline your operations. We integrate LLMs and machine learning models to build chatbots, data analyzers, and automated workflow agents.",
     startingPrice: "$999",
     features: [
       "Custom LLM Integration",
       "Intelligent Chatbots",
       "Automated Data Entry",
       "Predictive Analytics",
-      "Voice AI Agents"
+      "Voice AI Agents",
     ],
     process: [
       "Workflow Audit",
       "Model Selection",
       "Integration & Training",
       "Testing & Refinement",
-      "Full Automation Handover"
+      "Full Automation Handover",
     ],
-    icon: Cpu
+    icon: Cpu,
   },
   {
-    id: 'product-design',
+    id: "product-design",
     title: "Product Design",
-    shortDescription: "UI/UX design that converts users and builds brand loyalty.",
-    fullDescription: "Design is not just about looks; it's about how it works. Our design team creates user-centric interfaces that are intuitive, accessible, and visually stunning.",
+    shortDescription:
+      "UI/UX design that converts users and builds brand loyalty.",
+    fullDescription:
+      "Design is not just about looks; it's about how it works. Our design team creates user-centric interfaces that are intuitive, accessible, and visually stunning.",
     startingPrice: "$399",
     features: [
       "User Research & Personas",
       "Wireframing & Prototyping",
       "High-Fidelity UI Design",
       "Design Systems",
-      "Usability Testing"
+      "Usability Testing",
     ],
     process: [
       "User Research",
       "Low-Fidelity Sketches",
       "Interactive Prototypes",
       "Visual Design",
-      "Developer Handoff"
+      "Developer Handoff",
     ],
-    icon: Box
-  }
+    icon: Box,
+  },
 ];
 
 export const SERVICE_PRICES = [
@@ -241,8 +306,8 @@ export const SERVICE_PRICES = [
       "SEO Optimization",
       "Contact Form",
       "Social Integration",
-      "1 Month Support"
-    ]
+      "1 Month Support",
+    ],
   },
   {
     id: 2,
@@ -255,8 +320,8 @@ export const SERVICE_PRICES = [
       "Figma Prototypes",
       "Design System",
       "User Flow Maps",
-      "Developer Handover"
-    ]
+      "Developer Handover",
+    ],
   },
   {
     id: 3,
@@ -269,8 +334,8 @@ export const SERVICE_PRICES = [
       "User Auth",
       "Push Notifications",
       "Basic API Logic",
-      "Store Submission"
-    ]
+      "Store Submission",
+    ],
   },
   {
     id: 4,
@@ -283,8 +348,8 @@ export const SERVICE_PRICES = [
       "OpenAI API Integration",
       "Workflow Automation",
       "Data Analysis Tool",
-      "Model Training"
-    ]
+      "Model Training",
+    ],
   },
   {
     id: 5,
@@ -297,8 +362,8 @@ export const SERVICE_PRICES = [
       "Wallet Integration",
       "Minting Website",
       "Gas Optimization",
-      "Security Basic Check"
-    ]
+      "Security Basic Check",
+    ],
   },
   {
     id: 6,
@@ -311,9 +376,9 @@ export const SERVICE_PRICES = [
       "Database Design",
       "Admin Dashboard",
       "Adv. Authentication",
-      "Cloud Deployment"
-    ]
-  }
+      "Cloud Deployment",
+    ],
+  },
 ];
 
 export const BUSINESS_BUNDLES = [
@@ -322,7 +387,8 @@ export const BUSINESS_BUNDLES = [
     title: "Kickstarter Pack",
     price: "$1,200",
     subtitle: "Launch your idea",
-    description: "Get your business online instantly with a powerful web and mobile presence.",
+    description:
+      "Get your business online instantly with a powerful web and mobile presence.",
     icon: Rocket,
     popular: false,
     features: [
@@ -331,15 +397,16 @@ export const BUSINESS_BUNDLES = [
       "Admin Dashboard for Content",
       "2 Months Dedicated Support",
       "Domain & Hosting Setup",
-      "Social Media Integration"
-    ]
+      "Social Media Integration",
+    ],
   },
   {
     id: "growth",
     title: "Growth Accelerator",
     price: "$2,400",
     subtitle: "Scale your operations",
-    description: "A complete digital transformation suite. Perfect for growing businesses needing control.",
+    description:
+      "A complete digital transformation suite. Perfect for growing businesses needing control.",
     icon: Zap,
     popular: true,
     features: [
@@ -348,15 +415,16 @@ export const BUSINESS_BUNDLES = [
       "Advanced Admin Dashboard & Analytics",
       "Content Management System (CMS)",
       "Payment Gateway Integration",
-      "3 Months Priority Support"
-    ]
+      "3 Months Priority Support",
+    ],
   },
   {
     id: "enterprise",
     title: "Market Dominator",
     price: "$4,500+",
     subtitle: "Rule your industry",
-    description: "Full-scale custom development with AI integration and automation tools.",
+    description:
+      "Full-scale custom development with AI integration and automation tools.",
     icon: Crown,
     popular: false,
     features: [
@@ -365,13 +433,14 @@ export const BUSINESS_BUNDLES = [
       "AI Automation & Chatbots",
       "SaaS Architecture Setup",
       "6 Months Premium Support",
-      "Dedicated Project Manager"
-    ]
-  }
+      "Dedicated Project Manager",
+    ],
+  },
 ];
 
 export const ABOUT_CONTENT = {
-  story: "Founded in 2024, Rishabh Labs emerged from a vision to bridge the gap between complex emerging technologies and practical business applications. What started as a small team of passionate developers has grown into a full-service digital agency known for delivering 'future-proof' solutions.",
+  story:
+    "Founded in 2024, Rishabh Labs emerged from a vision to bridge the gap between complex emerging technologies and practical business applications. What started as a small team of passionate developers has grown into a full-service digital agency known for delivering 'future-proof' solutions.",
   stats: [
     { label: "Projects Delivered", value: "50+", icon: Trophy },
     { label: "Happy Clients", value: "100%", icon: Users },
@@ -379,23 +448,39 @@ export const ABOUT_CONTENT = {
     { label: "Technologies", value: "20+", icon: Code },
   ],
   values: [
-    { title: "Innovation First", description: "We don't just follow trends; we set them. We constantly explore new stacks like Web3 and AI to give our clients an edge.", icon: Rocket },
-    { title: "Transparency", description: "No hidden fees, no technical jargon. We keep you in the loop at every stage of the development cycle.", icon: Shield },
-    { title: "Quality Obsession", description: "From the first line of code to the final pixel, we maintain rigorous standards for performance and aesthetics.", icon: Target },
-  ]
+    {
+      title: "Innovation First",
+      description:
+        "We don't just follow trends; we set them. We constantly explore new stacks like Web3 and AI to give our clients an edge.",
+      icon: Rocket,
+    },
+    {
+      title: "Transparency",
+      description:
+        "No hidden fees, no technical jargon. We keep you in the loop at every stage of the development cycle.",
+      icon: Shield,
+    },
+    {
+      title: "Quality Obsession",
+      description:
+        "From the first line of code to the final pixel, we maintain rigorous standards for performance and aesthetics.",
+      icon: Target,
+    },
+  ],
 };
 
 export const INTERNATIONAL_OFFER = {
-    title: "Global Expansion Pack",
-    price: "$3,499",
-    description: "Scale your startup internationally with a complete localization and global infrastructure suite. We handle the technical complexities of cross-border operations.",
-    features: [
-        "Multi-language (i18n) Architecture",
-        "Global CDN & Edge Computing Setup",
-        "International Payment Gateway Integration",
-        "GDPR & Regional Compliance Audit",
-        "Localized SEO & Content Strategy"
-    ]
+  title: "Global Expansion Pack",
+  price: "$3,499",
+  description:
+    "Scale your startup internationally with a complete localization and global infrastructure suite. We handle the technical complexities of cross-border operations.",
+  features: [
+    "Multi-language (i18n) Architecture",
+    "Global CDN & Edge Computing Setup",
+    "International Payment Gateway Integration",
+    "GDPR & Regional Compliance Audit",
+    "Localized SEO & Content Strategy",
+  ],
 };
 
 export const LEGAL_CONTENT = {
@@ -421,7 +506,7 @@ export const LEGAL_CONTENT = {
 
       4. Security of Your Information
       We use administrative, technical, and physical security measures to help protect your personal information. While we have taken reasonable steps to secure the personal information you provide to us, please be aware that despite our efforts, no security measures are perfect or impenetrable, and no method of data transmission can be guaranteed against any interception or other type of misuse.
-    `
+    `,
   },
   terms: {
     title: "Terms of Service",
@@ -446,7 +531,7 @@ export const LEGAL_CONTENT = {
 
       5. Term and Termination
       These Terms of Use shall remain in full force and effect while you use the Site. WITHOUT LIMITING ANY OTHER PROVISION OF THESE TERMS OF USE, WE RESERVE THE RIGHT TO, IN OUR SOLE DISCRETION AND WITHOUT NOTICE OR LIABILITY, DENY ACCESS TO AND USE OF THE SITE TO ANY PERSON.
-    `
+    `,
   },
   cookie: {
     title: "Cookie Policy",
@@ -466,6 +551,6 @@ export const LEGAL_CONTENT = {
 
       4. Updates to this policy
       We may update this Cookie Policy from time to time in order to reflect, for example, changes to the cookies we use or for other operational, legal or regulatory reasons. Please therefore re-visit this Cookie Policy regularly to stay informed about our use of cookies and related technologies.
-    `
-  }
+    `,
+  },
 };

@@ -1,140 +1,158 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { SERVICES } from '../data/content';
-import { Check, ArrowRight } from 'lucide-react';
+import React, { useRef, useState, useEffect } from "react";
+import { SERVICES } from "../data/content";
+import { Check, ArrowRight } from "lucide-react";
 
 interface ServicesHorizontalProps {
   onLearnMore: (id: string) => void;
 }
 
-const ServicesHorizontal: React.FC<ServicesHorizontalProps> = ({ onLearnMore }) => {
-  const targetRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [scrollRange, setScrollRange] = useState(0);
+const ServicesHorizontal: React.FC<ServicesHorizontalProps> = ({
+  onLearnMore,
+}) => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
   const [isMobile, setIsMobile] = useState(false);
 
-  // Check for mobile to disable scroll-jacking
   useEffect(() => {
-    const checkMobile = () => {
-        setIsMobile(window.innerWidth < 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const updateMobile = () => setIsMobile(window.innerWidth < 768);
+    updateMobile();
+    window.addEventListener("resize", updateMobile);
+    return () => window.removeEventListener("resize", updateMobile);
   }, []);
 
-  // Measure the content width vs viewport width to determine exact scroll distance
+  // Scroll Hijack: Convert vertical scroll to horizontal (both directions)
   useEffect(() => {
-    const updateScrollRange = () => {
-      if (contentRef.current) {
-        const contentWidth = contentRef.current.scrollWidth;
-        const viewportWidth = window.innerWidth;
-        const range = contentWidth - viewportWidth + (window.innerWidth < 768 ? 40 : 100); 
-        setScrollRange(range > 0 ? range : 0);
+    if (isMobile || !scrollRef.current || !sectionRef.current) return;
+
+    const scroller = scrollRef.current;
+    const section = sectionRef.current;
+
+    const onWheel = (e: WheelEvent) => {
+      const startThreshold = 30;
+      const endThreshold = 30;
+
+      const atStart = scroller.scrollLeft <= startThreshold;
+      const atEnd =
+        scroller.scrollLeft + scroller.clientWidth >=
+        scroller.scrollWidth - endThreshold;
+
+      const goingDown = e.deltaY > 0; // scroll forward
+      const goingUp = e.deltaY < 0; // scroll backward
+
+      // SCROLL RIGHT (down) until end
+      if (goingDown && !atEnd) {
+        e.preventDefault();
+        scroller.scrollLeft += e.deltaY;
+        return;
+      }
+
+      // SCROLL LEFT (up) until start
+      if (goingUp && !atStart) {
+        e.preventDefault();
+        scroller.scrollLeft += e.deltaY;
+        return;
       }
     };
 
-    updateScrollRange();
-    window.addEventListener('resize', updateScrollRange);
-    return () => window.removeEventListener('resize', updateScrollRange);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
-
-  const x = useTransform(scrollYProgress, [0, 1], ["0px", `-${scrollRange}px`]);
+    section.addEventListener("wheel", onWheel, { passive: false });
+    return () => section.removeEventListener("wheel", onWheel);
+  }, [isMobile]);
 
   return (
-    <section 
-        ref={targetRef} 
-        id="services" 
-        className={`relative bg-dark ${isMobile ? 'h-auto py-20' : 'h-[300vh]'}`}
-    >
-      <div className={`
-        ${isMobile ? 'relative' : 'sticky top-0 h-screen overflow-hidden flex items-center'} 
-        bg-dark
-      `}>
-        
-        {/* Dynamic Background */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-br from-purple-950/20 via-black to-rose-950/20" />
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,#9333ea15_0%,transparent_50%)]" />
-        <div className="absolute inset-0 bg-grid-white/[0.02] bg-[length:30px_30px] pointer-events-none" />
-        
-        {/* Central Gradient */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
-
-        {/* Section Header */}
-        <div className={`
-            absolute left-4 md:left-20 z-10 max-w-md pointer-events-none
-            ${isMobile ? '-top-12' : 'top-10'}
-        `}>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-2 md:mb-4">Our Expertise</h2>
-          <p className="text-gray-400 text-sm md:text-base hidden md:block">Drag or scroll to explore our full range of technical capabilities.</p>
+    <section ref={sectionRef} id="services" className="relative bg-dark py-20">
+      <div
+        className={`${
+          isMobile
+            ? "relative"
+            : "sticky top-0 h-screen flex items-center justify-start overflow-hidden"
+        } bg-dark`}
+      >
+        {/* Header */}
+        <div className="absolute top-10 left-4 md:left-20 z-20 max-w-md pointer-events-none">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-2 md:mb-4">
+            Our Expertise
+          </h2>
+          <p className="text-gray-400 text-xs md:text-base block">
+            Scroll to explore our full range of technical capabilities.
+          </p>
         </div>
 
-        <motion.div 
-          ref={contentRef}
-          style={{ x: isMobile ? 0 : x }} 
+        {/* Horizontal Scroll Content */}
+        <div
+          ref={scrollRef}
           className={`
-            flex gap-6 md:gap-8 px-4 md:px-20 relative z-10 items-center
-            ${isMobile ? 'overflow-x-auto snap-x snap-mandatory pb-8 pt-4 w-full no-scrollbar' : ''}
+            flex gap-6 md:gap-8 px-4 md:px-28 z-10 items-center
+            ${
+              isMobile
+                ? "overflow-x-auto snap-x snap-mandatory pb-10 pt-20 w-full no-scrollbar"
+                : "overflow-x-scroll overflow-y-hidden no-scrollbar h-full"
+            }
           `}
         >
-          {/* Intro Spacer - Pushes content to start a bit later so header isn't covered immediately */}
-          <div className="w-[10px] md:w-[50px] flex-shrink-0" />
+          {/* Spacer Left */}
+          <div className="w-[20px] md:w-[200px] flex-shrink-0" />
 
           {SERVICES.map((service) => (
             <div
               key={service.id}
-              className="relative group h-[450px] w-[300px] md:h-[520px] md:w-[400px] flex-shrink-0 rounded-3xl bg-surface border border-white/5 p-6 md:p-8 flex flex-col overflow-hidden hover:border-accent/50 transition-colors shadow-2xl snap-center"
+              className="relative group 
+                h-[400px] w-[260px]
+                md:h-[480px] md:w-[340px]
+                lg:h-[500px] lg:w-[360px]
+                flex-shrink-0 rounded-3xl bg-surface border border-white/5
+                p-6 md:p-8 flex flex-col overflow-hidden
+                hover:border-accent/50 transition-colors shadow-2xl snap-center"
             >
-              {/* Decorative Giant Icon Background */}
-              <div className="absolute -bottom-12 -right-12 z-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500 transform rotate-12">
-                 <service.icon className="w-64 h-64 text-white" />
+              {/* Background Icon */}
+              <div className="absolute -bottom-10 -right-10 z-0 opacity-[0.03] group-hover:opacity-[0.08] rotate-12 transition-opacity">
+                <service.icon className="w-56 h-56 text-white" />
               </div>
-              
-              {/* Background Gradient Mesh */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-purple-900/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
               <div className="relative z-10 h-full flex flex-col">
-                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors border border-white/5 group-hover:border-accent/30 shadow-inner">
-                  <service.icon className="w-7 h-7 text-accent" />
+                {/* Icon */}
+                <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center mb-5 border border-white/5 group-hover:border-accent/30 group-hover:bg-accent/20 transition-colors">
+                  <service.icon className="w-6 h-6 text-accent" />
                 </div>
-                
-                <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-3">{service.title}</h3>
-                
-                <p className="text-sm md:text-base text-gray-400 leading-relaxed mb-6">
+
+                {/* Title */}
+                <h3 className="text-xl md:text-2xl font-display font-bold text-white mb-3">
+                  {service.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs md:text-sm text-gray-400 leading-relaxed mb-4 flex-grow line-clamp-3">
                   {service.shortDescription}
                 </p>
 
-                {/* Features List */}
-                <div className="flex-grow">
-                   <ul className="space-y-3 mb-6">
-                      {service.features?.slice(0, 3).map((feature, i) => (
-                          <li key={i} className="flex items-start gap-2 text-sm text-gray-400">
-                              <Check className="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" />
-                              <span className="line-clamp-1">{feature}</span>
-                          </li>
-                      ))}
-                   </ul>
-                </div>
+                {/* Features */}
+                <ul className="space-y-2 mb-4">
+                  {service.features?.slice(0, 3).map((feature, idx) => (
+                    <li
+                      key={idx}
+                      className="flex items-start gap-2 text-xs md:text-sm text-gray-400"
+                    >
+                      <Check className="w-4 h-4 text-purple-500 flex-shrink-0 mt-0.5" />
+                      <span className="line-clamp-1">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
-                <div className="pt-4 border-t border-white/5 mt-auto">
-                  <button 
-                    onClick={() => onLearnMore(service.id)}
-                    className="flex items-center gap-2 text-sm font-bold text-white hover:text-accent transition-colors group/btn"
-                  >
-                    Learn More <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </button>
-                </div>
+                {/* CTA */}
+                <button
+                  onClick={() => onLearnMore(service.id)}
+                  className="mt-auto border-t border-white/5 pt-3 flex items-center gap-1.5 text-xs md:text-sm font-bold text-white hover:text-accent transition-colors"
+                >
+                  Learn More
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </button>
               </div>
             </div>
           ))}
-          
-          {/* End Spacer */}
-          <div className="w-[20px] md:w-[100px] flex-shrink-0" />
-        </motion.div>
+
+          {/* Spacer Right */}
+          <div className="w-[20px] md:w-[200px] flex-shrink-0" />
+        </div>
       </div>
     </section>
   );
