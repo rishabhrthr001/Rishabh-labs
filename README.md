@@ -29,7 +29,7 @@ A premium, futuristic software development agency website featuring a capsule na
 
 1.  **Clone the repository**
     ```bash
-    git clone https://github.com/yourusername/rishabh-labs.git
+    git clone https://github.com/rishabhrthr001/rishabh-labs.git
     cd rishabh-labs
     ```
 
